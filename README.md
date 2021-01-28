@@ -1,1 +1,2 @@
-# discgolfstats
+# Disc Golf Stats
+
