@@ -1,2 +1,2 @@
-# Disc Golf Stats
+# Best Disc Golf
 
