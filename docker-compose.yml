@@ -64,7 +64,7 @@ services:
     volumes:
       - ./src:/var/www/html
     working_dir: /var/www/html
-    entrypoint: ['npm']
+    #entrypoint: ['npm']
     networks:
       - laravel
 
@@ -78,7 +78,7 @@ services:
     depends_on: 
       - mysql
     working_dir: /var/www/html
-    entrypoint: ['/var/www/html/artisan']
+    #entrypoint: ['/var/www/html/artisan']
     networks:
       - laravel
 
