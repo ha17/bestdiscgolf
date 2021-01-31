@@ -78,7 +78,7 @@ services:
     depends_on: 
       - mysql
     working_dir: /var/www/html
-    #entrypoint: ['/var/www/html/artisan']
+    entrypoint: ['/var/www/html/artisan']
     networks:
       - laravel
 
@@ -95,3 +95,22 @@ services:
       MYSQL_ROOT_PASSWORD: secret 
     networks:
       - laravel
+
+  dbBackup:
+    image: fradelg/mysql-cron-backup
+    depends_on:
+      - mysql
+    restart: always
+    volumes:
+      - ./db-backup:/backup
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASS=secret
+      - MYSQL_DB=discgolfstats
+      - CRON_TIME=0 0 * * *
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - TIMEOUT=10s
+      - INIT_BACKUP=1
+    networks:
+      - wp-base
